@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboards</title>
+    <link rel="stylesheet" href="leaderboards.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Leaderboards</h1>
+        <table id="leaderboards-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Rank</th>
+                    <th>Earned</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Leaderboards data will be populated here -->
+            </tbody>
+        </table>
+        <a href="dashboard.html" class="button">Back to Dashboard</a>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('fetch_leaderboards.php')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector('#leaderboards-table tbody');
+                    data.forEach((user, index) => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${user.name}</td>
+                            <td>${index + 1}</td>
+                            <td>${user.entries} Coins</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Error fetching leaderboards:', error));
+        });
+    </script>
+</body>
+</html>

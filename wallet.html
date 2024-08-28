@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet</title>
+    <link rel="stylesheet" href="wallet.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Your Wallet</h1>
+        <div class="wallet-info">
+            <p id="points">Points: 0</p>
+            <p id="dollars">Dollars: $0.00</p>
+        </div>
+        <button class="back-button" onclick="history.back()">Back</button>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('wallet.php')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('points').textContent = 'Points: ' + data.points;
+                    document.getElementById('dollars').textContent = 'Dollars: $' + data.dollars.toFixed(2);
+                })
+                .catch(error => console.error('Error fetching wallet data:', error));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recent Activities</title>
+    <link rel="stylesheet" href="recent_activities.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Recent Activities</h1>
+        <table id="activities-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Country</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated here -->
+            </tbody>
+        </table>
+        <button class="back-button" onclick="history.back()">Back</button>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('recent_activities.php')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector('#activities-table tbody');
+                    data.forEach(activity => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${activity.name}</td>
+                            <td>${activity.email}</td>
+                            <td>${activity.phone}</td>
+                            <td>${activity.country}</td>
+                            <td>${new Date(activity.created_at).toLocaleString()}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Error fetching activities:', error));
+        });
+    </script>
+</body>
+</html>

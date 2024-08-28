@@ -1,0 +1,88 @@
+/* General styles */
+body, html {
+    height: auto;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffcc00b9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.form-container {
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    max-width: 600px;
+    height: auto;
+    overflow-y: auto;
+    text-align: left;
+    margin: 20px auto;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+.wallet-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.wallet-info p {
+    font-size: 18px;
+    color: #666;
+}
+
+.back-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ffcc00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.back-button:hover {
+    background-color: #e6b800;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    body {
+        padding: 5px;
+    }
+
+    .form-container {
+        padding: 15px 20px;
+        margin: 10px auto;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .wallet-info p {
+        font-size: 16px;
+    }
+
+    .back-button {
+        font-size: 14px;
+    }
+}
